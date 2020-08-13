@@ -18,4 +18,3 @@ writeScriptBin "protect-master" ''#!/usr/bin/env bash
     fi
   fi
 ''
-

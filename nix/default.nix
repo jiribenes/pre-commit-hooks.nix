@@ -5,10 +5,10 @@
 let
   overlay =
     _: pkgs:
-        {
-          inherit (pkgs) niv ormolu nixpkgs-fmt;
-          packages = pkgs.callPackages ./packages.nix {};
-        };
+      {
+        inherit (pkgs) niv ormolu nixpkgs-fmt;
+        packages = pkgs.callPackages ./packages.nix {};
+      };
 in
 import sources.nixpkgs {
   overlays = [ overlay ];

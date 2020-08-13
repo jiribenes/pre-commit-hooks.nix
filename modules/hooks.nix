@@ -15,7 +15,7 @@ in
               default = [];
             };
         };
-
+    };
   config.pre-commit.hooks =
     {
       brittany =
@@ -56,6 +56,6 @@ in
           description = "Protects the master branch from unwanted commits";
           entry = "${tools.protect-master}/bin/protect-master";
           pass_filenames = false;
-        };  
+        };
     };
 }
