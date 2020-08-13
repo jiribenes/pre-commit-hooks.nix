@@ -122,7 +122,7 @@ let
             {
               raw =
                 {
-                  inherit (config) name entry language files types pass_filenames;
+                  inherit (config) name entry language files types pass_filenames always_run;
                   id = name;
                   exclude = mergeExcludes config.excludes;
                 };
