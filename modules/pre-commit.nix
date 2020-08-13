@@ -112,6 +112,11 @@ let
                   description = "Whether to pass filenames as arguments to the entry point.";
                   default = true;
                 };
+              always_run =
+                mkOption {
+                  type = types.bool;
+                  default = true;
+                };
             };
           config =
             {
