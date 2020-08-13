@@ -1,11 +1,6 @@
-{ ansible-lint
-, haskellPackages
+{ haskellPackages
 , hlint
-, shellcheck
 , ormolu
-, hindent
-, cabal-fmt
-, elmPackages
 , niv
 , gitAndTools
 , runCommand
@@ -13,19 +8,11 @@
 , writeScript
 , git
 , nixpkgs-fmt
-, nixfmt
-, nix-linter
 , callPackage
-, pythonPackages
-, rustfmt
-, clippy
-, cargo
 }:
 
 {
-  inherit ansible-lint hlint shellcheck ormolu hindent cabal-fmt nixpkgs-fmt nixfmt nix-linter rustfmt clippy cargo;
-  inherit (elmPackages) elm-format;
-  inherit (haskellPackages) brittany hpack;
-  inherit (pythonPackages) yamllint;
-  terraform-fmt = callPackage ./terraform-fmt {};
+  inherit hlint shellcheck ormolu nixpkgs-fmt;
+  inherit (haskellPackages) brittany;
+  protect-master = callPackage ./protect-master {};
 }
