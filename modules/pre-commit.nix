@@ -332,7 +332,7 @@ in
               else
                 ln -s ${configFile} .pre-commit-config.yaml
                 # Remove any previously installed hooks (since pre-commit itself has no convergent design)
-                hooks="pre-commit pre-merge-commit pre-push prepare-commit-msg commit-msg post-checkout post-commit"
+                hooks="pre-commit pre-merge-commit pre-push prepare-commit-msg commit-msg"
                 for hook in $hooks; do
                   pre-commit uninstall -t $hook
                 done
@@ -348,7 +348,7 @@ in
                         stage="pre-"$stage
                         pre-commit install -t $stage
                         ;;
-                      prepare-commit-msg | commit-msg | post-checkout | post-commit)
+                      prepare-commit-msg | commit-msg)
                         pre-commit install -t $stage
                         ;;
                       *)
