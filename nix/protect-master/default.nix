@@ -2,8 +2,10 @@
 
 writeScriptBin "protect-master" ''#!/usr/bin/env bash
   protected_branch='master'
+  echo -en "test1"
   if read local_ref local_sha remote_ref remote_sha; then
-    if [[ "$remote_ref" == *"$protected_branch" ]]; then
+  echo -en "test2"
+    if [[ "$remote_ref" == *"$protected_branch"* ]]; then
       echo -en "\033[1;33mYou're about to push to master, this is not correct for Kasiopea!\033[0m"
       echo -en "\033[1;33mIs that what you really intended? [y|n] \033[0m"
       echo -en "\033[1m"
