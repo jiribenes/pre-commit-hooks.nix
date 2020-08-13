@@ -12,7 +12,6 @@ tools // rec {
   pre-commit-check = run {
     src = ../.;
     hooks = {
-      shellcheck.enable = true;
       nixpkgs-fmt.enable = true;
     };
     excludes = [

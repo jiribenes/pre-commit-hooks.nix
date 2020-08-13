@@ -12,7 +12,7 @@
 }:
 
 {
-  inherit hlint shellcheck ormolu nixpkgs-fmt;
+  inherit hlint ormolu nixpkgs-fmt;
   inherit (haskellPackages) brittany;
   protect-master = callPackage ./protect-master {};
 }
