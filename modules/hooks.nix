@@ -6,41 +6,15 @@ in
 {
   options.pre-commit.settings =
     {
-      ormolu =
-        {
-          defaultExtensions =
-            mkOption {
-              type = types.listOf types.str;
-              description = "Haskell language extensions to enable";
-              default = [];
-            };
-        };
     };
   config.pre-commit.hooks =
     {
-      brittany =
-        {
-          name = "brittany";
-          description = "Haskell source code formatter.";
-          entry = "${tools.brittany}/bin/brittany --write-mode=inplace";
-          files = "\\.l?hs$";
-        };
       hlint =
         {
           name = "hlint";
           description =
             "HLint gives suggestions on how to improve your source code.";
           entry = "${tools.hlint}/bin/hlint";
-          files = "\\.l?hs$";
-        };
-      ormolu =
-        {
-          name = "ormolu";
-          description = "Haskell code prettifier.";
-          entry =
-            "${tools.ormolu}/bin/ormolu --mode inplace ${
-            lib.escapeShellArgs (lib.concatMap (ext: [ "--ghc-opt" "-X${ext}" ]) settings.ormolu.defaultExtensions)
-            }";
           files = "\\.l?hs$";
         };
       nixpkgs-fmt =

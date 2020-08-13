@@ -1,6 +1,4 @@
-{ haskellPackages
-, hlint
-, ormolu
+{ hlint
 , niv
 , gitAndTools
 , runCommand
@@ -12,7 +10,6 @@
 }:
 
 {
-  inherit hlint ormolu nixpkgs-fmt;
-  inherit (haskellPackages) brittany;
+  inherit hlint nixpkgs-fmt;
   protect-master = callPackage ./protect-master {};
 }

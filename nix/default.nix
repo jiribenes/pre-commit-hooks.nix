@@ -6,7 +6,7 @@ let
   overlay =
     _: pkgs:
       {
-        inherit (pkgs) niv ormolu nixpkgs-fmt;
+        inherit (pkgs) niv nixpkgs-fmt;
         packages = pkgs.callPackages ./packages.nix {};
       };
 in
