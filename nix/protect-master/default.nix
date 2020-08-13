@@ -2,21 +2,12 @@
 
 writeScriptBin "protect-master" ''#!/usr/bin/env bash
   protected_branch='master'
-  echo -en "test1"
-  if read local_ref local_sha remote_ref remote_sha; then
-  echo -en "test2"
-    if [[ "$remote_ref" == *"$protected_branch"* ]]; then
-      echo -en "\033[1;33mYou're about to push to master, this is not correct for Kasiopea!\033[0m"
-      echo -en "\033[1;33mIs that what you really intended? [y|n] \033[0m"
-      echo -en "\033[1m"
-      read -n 1 -r < /dev/tty
-      echo -en "\033[0m"
+  current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
 
-      echo
-      if echo $REPLY | grep -E '^[Yy]$' > /dev/null; then
-          exit 0 # push will execute
-      fi
-      exit 1 # push will not execute
-    fi
+  if [ $current_branch = $protected_branch ]; then
+    echo -en "\033[1;33mYou tried to commit/push to master, this is not a correct approach!\033[0m\n"
+    echo -en "\033[1;33mIf you want to contribute code, please open a Pull Request!\033[0m\n"
+
+    exit 1 # push will not execute
   fi
 ''
